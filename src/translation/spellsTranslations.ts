@@ -282,6 +282,18 @@ export const spellTranslations = {
     spell_natures_dread: "Nature's Dread",
     spell_natures_dread_description:
       "Unleash the wrath of nature upon an enemy, dealing magic damage and cursing them for 3 turns.",
+
+    spell_harrowing_wounds: "Harrowing Wounds",
+    spell_harrowing_wounds_description:
+      "Inflict a grievous magical wound upon an enemy, dealing magic damage and reducing healing received by 50% for 3 turns.",
+
+    spell_cloud_of_daggers: "Cloud of Daggers",
+    spell_cloud_of_daggers_description:
+      "Fill an area with whirling magical blades that tear through enemies who enter or remain within it.",
+
+    spell_crown_of_madness: "Crown of Madness",
+    spell_crown_of_madness_description:
+      "Drive an enemy into madness, causing them to attack their own allies for 3 turns.",
   },
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -568,5 +580,17 @@ export const spellTranslations = {
     spell_natures_dread: "Pavor da Natureza",
     spell_natures_dread_description:
       "Desencadeie a fúria da natureza contra um inimigo, causando dano mágico e amaldiçoando-o por 3 turnos.",
+
+    spell_harrowing_wounds: "Feridas Devastadoras",
+    spell_harrowing_wounds_description:
+      "Inflija uma ferida mágica devastadora em um inimigo, causando dano mágico e reduzindo a cura recebida em 50% por 3 turnos.",
+
+    spell_cloud_of_daggers: "Nuvem de Adagas",
+    spell_cloud_of_daggers_description:
+      "Preencha uma área com lâminas mágicas giratórias que dilaceram os inimigos que entrarem ou permanecerem nela.",
+
+    spell_crown_of_madness: "Coroa da Loucura",
+    spell_crown_of_madness_description:
+      "Leve um inimigo à loucura, fazendo com que ele ataque seus próprios aliados por 3 turnos.",
   },
 };

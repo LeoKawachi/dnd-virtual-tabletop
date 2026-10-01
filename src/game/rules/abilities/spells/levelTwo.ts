@@ -249,7 +249,7 @@ export const LEVELTWOSPELLS: AbilityDefinition[] = [
     targetingMode: "area",
 
     range: 10,
-    allowedClasses: ["druid"],
+    allowedClasses: ["druid", "ranger"],
 
     area: {
       shape: "circle",
@@ -373,6 +373,167 @@ export const LEVELTWOSPELLS: AbilityDefinition[] = [
       {
         type: "apply-condition",
         conditionId: "cursed",
+        duration: 3,
+        stacks: 1,
+      },
+    ],
+
+    recovery: "unlimited",
+
+    isSpell: true,
+    spellLevel: 2,
+
+    resourceCost: {
+      amount: 1,
+    },
+
+    imagePath: "/assets/abilities/",
+  },
+
+  {
+    id: "cloud_of_daggers",
+
+    nameKey: "spell_cloud_of_daggers",
+    descriptionKey: "spell_cloud_of_daggers_description",
+
+    actionType: "action",
+    targetType: "location",
+    targetingMode: "area",
+
+    range: 10,
+    allowedClasses: ["bard", "wizard"],
+
+    area: {
+      shape: "circle",
+      radius: 3,
+    },
+
+    effects: [
+      {
+        type: "damage",
+        damage: {
+          count: 3,
+          sides: 5,
+          type: "magic",
+        },
+      },
+    ],
+
+    recovery: "unlimited",
+
+    instance: {
+      lifetime: "duration",
+      duration: 3,
+
+      effects: [
+        {
+          trigger: "enter-area",
+          effect: {
+            type: "damage",
+            damage: {
+              count: 1,
+              sides: 9,
+              type: "magic",
+            },
+          },
+        },
+        {
+          trigger: "enter-area",
+          effect: {
+            type: "apply-condition",
+            conditionId: "bleeding",
+            duration: 2,
+            stacks: 1,
+            value: 2,
+          },
+        },
+
+        {
+          trigger: "turn-start",
+          effect: {
+            type: "damage",
+            damage: {
+              count: 1,
+              sides: 9,
+              type: "magic",
+            },
+          },
+        },
+        {
+          trigger: "turn-start",
+          effect: {
+            type: "apply-condition",
+            conditionId: "bleeding",
+            duration: 2,
+            stacks: 1,
+            value: 2,
+          },
+        },
+
+        {
+          trigger: "move-inside-area",
+          effect: {
+            type: "damage",
+            damage: {
+              count: 1,
+              sides: 9,
+              type: "magic",
+            },
+          },
+        },
+        {
+          trigger: "move-inside-area",
+          effect: {
+            type: "apply-condition",
+            conditionId: "bleeding",
+            duration: 2,
+            stacks: 1,
+            value: 2,
+          },
+        },
+      ],
+    },
+
+    concentration: true,
+
+    isSpell: true,
+    spellLevel: 2,
+
+    resourceCost: {
+      amount: 1,
+    },
+
+    imagePath: "/assets/abilities/",
+  },
+
+  // NEEDS FIX
+  // ANTI HEAL
+  {
+    id: "harrowing_wounds",
+
+    nameKey: "spell_harrowing_wounds",
+    descriptionKey: "spell_harrowing_wounds_description",
+
+    actionType: "action",
+    targetType: "enemy",
+    targetingMode: "single",
+    attackType: "spell",
+
+    range: 8,
+    allowedClasses: ["cleric", "druid", "wizard", "bard"],
+
+    effects: [
+      {
+        type: "damage",
+        damage: {
+          count: 3,
+          sides: 9,
+          type: "magic",
+        },
+      },
+      {
+        type: "apply-condition",
+        //conditionId: "anti-heal",
         duration: 3,
         stacks: 1,
       },
@@ -1221,6 +1382,45 @@ export const LEVELTWOSPELLS: AbilityDefinition[] = [
     spellLevel: 2,
 
     concentration: true,
+
+    resourceCost: {
+      amount: 1,
+    },
+
+    imagePath: "/assets/abilities/",
+  },
+
+  //NEEDS FIX
+  //CONFUSED
+  {
+    id: "crown_of_madness",
+
+    nameKey: "spell_crown_of_madness",
+    descriptionKey: "spell_crown_of_madness_description",
+
+    actionType: "action",
+    targetType: "enemy",
+    targetingMode: "single",
+    attackType: "spell",
+
+    range: 8,
+    allowedClasses: ["bard"],
+
+    effects: [
+      {
+        type: "apply-condition",
+        //conditionId: "confused",
+        duration: 3,
+        stacks: 1,
+      },
+    ],
+
+    recovery: "unlimited",
+
+    concentration: true,
+
+    isSpell: true,
+    spellLevel: 2,
 
     resourceCost: {
       amount: 1,
