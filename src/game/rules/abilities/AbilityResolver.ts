@@ -173,6 +173,31 @@ export function resolveAbility(request: AbilityUseRequest): AbilityUseResult {
 
   const targets = resolvedTargets.targets;
 
+  for (const target of targets) {
+    const targetId = target.id;
+
+    if (!targetId) {
+      continue;
+    }
+
+    for (const effect of ability.effects) {
+      if (
+        effect.type !== "apply-condition" ||
+        effect.conditionId === undefined
+      ) {
+        continue;
+      }
+
+      if (combatEngine.isConditionBlocked(targetId, effect.conditionId)) {
+        return {
+          success: false,
+          abilityId: ability.id,
+          reason: `Cannot cast ${ability.nameKey}: condition "${effect.conditionId}" is blocked for this target.`,
+        };
+      }
+    }
+  }
+
   const updatedState = useAbility(ability, state);
 
   let instanceId: string | undefined;

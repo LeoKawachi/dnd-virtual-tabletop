@@ -15,7 +15,8 @@ export type AbilityEffectType =
   | "modify-stat"
   | "modify-behavior"
   | "damage-share"
-  | "grant-action";
+  | "grant-action"
+  | "block-condition";
 
 export type AbilityInstanceTrigger =
   | "enter-area"

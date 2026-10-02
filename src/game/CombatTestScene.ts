@@ -187,7 +187,7 @@ export class CombatTestScene extends Phaser.Scene {
       level: 1,
       team: "player",
       creatureType: "humanoid",
-      class: "ranger",
+      class: "bard",
 
       modifiers: [],
 
@@ -256,15 +256,15 @@ export class CombatTestScene extends Phaser.Scene {
       name: "Goblin",
       level: 1,
       team: "enemy",
-      creatureType: "undead",
-      class: "cleric",
+      creatureType: "humanoid",
+      class: "bard",
 
       modifiers: [],
 
       stats: this.goblinStats,
 
       hp: 30,
-      maxHp: 10,
+      maxHp: 30,
 
       armor: 2,
       magicResistance: 0,
@@ -299,7 +299,7 @@ export class CombatTestScene extends Phaser.Scene {
       stats: this.goblinStats,
 
       hp: 30,
-      maxHp: 10,
+      maxHp: 30,
 
       armor: 2,
       magicResistance: 0,
@@ -535,17 +535,23 @@ export class CombatTestScene extends Phaser.Scene {
       430,
       150,
       26,
-      "warding_bond",
+      "calm_emotions",
       0x5a2875,
-      () => this.useAbility("warding_bond"),
+      () => this.useAbility("calm_emotions"),
     );
 
     this.createButton(panelX + 120, 460, 150, 26, "test", 0x5a2875, () =>
       this.useAbility("test"),
     );
 
-    this.createButton(panelX + 120, 490, 150, 26, "iguinis", 0x5a2875, () =>
-      this.useAbility("iguinis"),
+    this.createButton(
+      panelX + 120,
+      490,
+      150,
+      26,
+      "intimidation",
+      0x5a2875,
+      () => this.useAbility("intimidation"),
     );
 
     this.add.text(panelX + 15, 522, "CONDITION TESTER", {

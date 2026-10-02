@@ -19,7 +19,12 @@ export type ConditionId =
   | "armor-penetration"
   | "magic-penetration"
   | "pulled"
-  | "pushed";
+  | "pushed"
+  | "feared"
+  | "anti-heal"
+  | "taunted"
+  | "confused"
+  | "short-sighted";
 
 export interface ConditionDefinition {
   id: ConditionId;
@@ -196,6 +201,38 @@ export const CONDITIONS: ConditionDefinition[] = [
     id: "pushed",
     nameKey: "condition_pushed",
     descriptionKey: "condition_pushed_description",
+    maxStacks: 1,
+    advantageWhenTargeted: false,
+    disadvantageOnAttacks: false,
+  },
+  {
+    id: "feared",
+    nameKey: "condition_feared",
+    descriptionKey: "condition_feared_description",
+    maxStacks: 1,
+    advantageWhenTargeted: true,
+    disadvantageOnAttacks: true,
+  },
+  {
+    id: "anti-heal",
+    nameKey: "condition_anti_heal",
+    descriptionKey: "condition_anti_heal_description",
+    maxStacks: 1,
+    advantageWhenTargeted: false,
+    disadvantageOnAttacks: false,
+  },
+  {
+    id: "taunted",
+    nameKey: "condition_taunted",
+    descriptionKey: "condition_taunted_description",
+    maxStacks: 1,
+    advantageWhenTargeted: false,
+    disadvantageOnAttacks: true,
+  },
+  {
+    id: "confused",
+    nameKey: "condition_confused",
+    descriptionKey: "condition_confused_description",
     maxStacks: 1,
     advantageWhenTargeted: false,
     disadvantageOnAttacks: false,

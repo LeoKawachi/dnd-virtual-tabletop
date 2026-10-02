@@ -72,7 +72,8 @@ export function canAttackTarget(
 ): boolean {
   return !conditions.some(
     (condition) =>
-      condition.id === "charmed" && condition.sourceId === targetId,
+      (condition.id === "charmed" && condition.sourceId === targetId) ||
+      (condition.id === "taunted" && condition.sourceId !== targetId),
   );
 }
 
@@ -165,7 +166,9 @@ export function canMoveTo(
 ): boolean {
   for (const condition of conditions) {
     if (
-      (condition.id === "charmed" || condition.id === "frightened") &&
+      (condition.id === "charmed" ||
+        condition.id === "frightened" ||
+        condition.id === "feared") &&
       condition.movementRestrictions
     ) {
       for (const restriction of condition.movementRestrictions) {

@@ -506,8 +506,6 @@ export const LEVELTWOSPELLS: AbilityDefinition[] = [
     imagePath: "/assets/abilities/",
   },
 
-  // NEEDS FIX
-  // ANTI HEAL
   {
     id: "harrowing_wounds",
 
@@ -533,7 +531,7 @@ export const LEVELTWOSPELLS: AbilityDefinition[] = [
       },
       {
         type: "apply-condition",
-        //conditionId: "anti-heal",
+        conditionId: "anti-heal",
         duration: 3,
         stacks: 1,
       },
@@ -659,6 +657,67 @@ export const LEVELTWOSPELLS: AbilityDefinition[] = [
 
     resourceCost: {
       amount: 1,
+    },
+
+    imagePath: "/assets/abilities/",
+  },
+
+  //NEEDS FIX
+  //SUMMON SET
+  //CONDITION FEAR
+  //ILLUSION VISION
+  {
+    id: "phantasmal_force",
+
+    nameKey: "spell_phantasmal_force",
+    descriptionKey: "spell_phantasmal_force_description",
+
+    actionType: "action",
+    targetType: "enemy",
+    targetingMode: "single",
+    attackType: "spell",
+
+    range: 8,
+    allowedClasses: ["bard"],
+
+    effects: [
+      {
+        type: "damage",
+        damage: {
+          count: 3,
+          sides: 7,
+          type: "magic",
+        },
+      },
+      {
+        type: "apply-condition",
+        //conditionId: "feared",
+        duration: 3,
+        stacks: 1,
+      },
+    ],
+
+    recovery: "unlimited",
+
+    concentration: true,
+
+    isSpell: true,
+    spellLevel: 2,
+
+    resourceCost: {
+      amount: 1,
+    },
+
+    instance: {
+      lifetime: "duration",
+      duration: 3,
+
+      // Creates a clone of the caster with:
+      // - fixed HP
+      // - copied abilities
+      // - cannot receive buffs
+      // - can swap position with the caster
+      // - remains until killed, cleansed, or concentration ends
     },
 
     imagePath: "/assets/abilities/",
@@ -1196,6 +1255,81 @@ export const LEVELTWOSPELLS: AbilityDefinition[] = [
     imagePath: "/assets/abilities/",
   },
 
+  {
+    id: "front_liner",
+    nameKey: "spell_front_liner",
+    descriptionKey: "spell_front_liner_description",
+    actionType: "bonus-action",
+    targetType: "enemy",
+    targetingMode: "area",
+
+    range: 5,
+
+    area: {
+      shape: "circle",
+      radius: 3,
+    },
+
+    allowedClasses: ["fighter", "barbarian", "paladin"],
+
+    effects: [
+      {
+        type: "apply-condition",
+        //conditionId: "taunted",
+        duration: 4,
+        stacks: 1,
+      },
+    ],
+
+    recovery: "unlimited",
+
+    isSpell: true,
+    spellLevel: 2,
+
+    resourceCost: {
+      amount: 1,
+    },
+
+    imagePath: "/assets/abilities/",
+  },
+
+  // NEEDS FIX
+  // STATS CHOOSING
+  {
+    id: "enhance_ability",
+
+    nameKey: "spell_enhance_ability",
+    descriptionKey: "spell_enhance_ability_description",
+
+    actionType: "action",
+    targetType: "ally",
+    targetingMode: "single",
+
+    range: 8,
+    allowedClasses: ["bard"],
+
+    effects: [
+      {
+        type: "modify-stat",
+        duration: 3,
+        // stat selection will be determined when the spell is cast
+      },
+    ],
+
+    recovery: "unlimited",
+
+    concentration: true,
+
+    isSpell: true,
+    spellLevel: 2,
+
+    resourceCost: {
+      amount: 1,
+    },
+
+    imagePath: "/assets/abilities/",
+  },
+
   // NEEDS FIX
   // TELEPORT
   {
@@ -1424,6 +1558,60 @@ export const LEVELTWOSPELLS: AbilityDefinition[] = [
 
     resourceCost: {
       amount: 1,
+    },
+
+    imagePath: "/assets/abilities/",
+  },
+
+  {
+    id: "calm_emotions",
+
+    nameKey: "spell_calm_emotions",
+    descriptionKey: "spell_calm_emotions_description",
+
+    actionType: "action",
+    targetType: "location",
+    targetingMode: "area",
+
+    range: 8,
+
+    concentration: true,
+
+    allowedClasses: ["bard"],
+
+    area: {
+      shape: "circle",
+      radius: 4,
+    },
+
+    effects: [
+      {
+        type: "remove-condition",
+        conditionIds: ["feared", "frightened", "confused", "charmed"],
+      },
+    ],
+
+    recovery: "unlimited",
+
+    isSpell: true,
+    spellLevel: 2,
+
+    resourceCost: {
+      amount: 1,
+    },
+
+    instance: {
+      lifetime: "duration",
+      duration: 3,
+      effects: [
+        {
+          trigger: "enter-area",
+          effect: {
+            type: "block-condition",
+            conditionIds: ["feared", "frightened", "confused", "charmed"],
+          },
+        },
+      ],
     },
 
     imagePath: "/assets/abilities/",

@@ -79,6 +79,15 @@ export function validateAbilityTarget(
     };
   }
 
+  const taunted = state.conditionManager.getCondition(casterId, "taunted");
+
+  if (taunted?.sourceId && taunted.sourceId !== target.id) {
+    return {
+      valid: false,
+      reason: "Taunted creatures can only target their taunter.",
+    };
+  }
+
   if (
     ability.range !== undefined &&
     !isAbilityInRange(ability, casterId, target.id, state)

@@ -145,7 +145,7 @@ export class CombatEngine {
     if (!current) {
       return;
     }
-
+    this.processAbilityInstanceDurations(current);
     this.processAbilityInstanceEffects(current, "turn-start");
   }
 
@@ -155,7 +155,6 @@ export class CombatEngine {
     if (current) {
       this.processTurnModifierDurations(current);
       this.processAbilityInstanceEffects(current, "turn-end");
-      this.processAbilityInstanceDurations(current);
     }
 
     const nextIndex = this.state.currentTurnIndex + 1;
@@ -984,10 +983,17 @@ export class CombatEngine {
       return 0;
     }
 
-    // Bleeding reduces healing by 50%.
-    if (conditions.some((condition) => condition.id === "bleeding")) {
-      amount = Math.floor(amount * 0.5);
+    //Anti heal reduces healing by 50%.
+    if (conditions.some((condition) => condition.id === "anti-heal")) {
+      amount = Math.round(amount * 0.5 * 100) / 100;
     }
+
+    // Bleeding reduces healing by 25%.
+    if (conditions.some((condition) => condition.id === "bleeding")) {
+      amount = Math.round(amount * 0.25 * 100) / 100;
+    }
+
+    console.log(`Healing ${targetId}: ${amount}`);
 
     if (amount <= 0) {
       return 0;
@@ -2228,6 +2234,32 @@ export class CombatEngine {
       );
 
       return attackerInside || defenderInside;
+    });
+  }
+
+  public isConditionBlocked(
+    targetId: string,
+    conditionId: ConditionId,
+  ): boolean {
+    return this.abilityInstances.some((instance) => {
+      if (!instance.effects) {
+        return false;
+      }
+
+      const inside = this.isCombatantInsideAbilityInstance(
+        targetId,
+        instance.id,
+      );
+
+      if (!inside) {
+        return false;
+      }
+
+      return instance.effects.some(
+        (instanceEffect) =>
+          instanceEffect.effect.type === "block-condition" &&
+          instanceEffect.effect.conditionIds?.includes(conditionId),
+      );
     });
   }
 }

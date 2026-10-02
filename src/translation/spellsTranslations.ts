@@ -294,6 +294,22 @@ export const spellTranslations = {
     spell_crown_of_madness: "Crown of Madness",
     spell_crown_of_madness_description:
       "Drive an enemy into madness, causing them to attack their own allies for 3 turns.",
+
+    spell_calm_emotions: "Calm Emotions",
+    spell_calm_emotions_description:
+      "Calm the emotions of creatures within the area, removing fear and confusion and preventing them from being inflicted again while they remain within it.",
+
+    spell_phantasmal_force: "Phantasmal Force",
+    spell_phantasmal_force_description:
+      "Create a terrifying illusion that assaults an enemy's mind, dealing magic damage and causing fear.",
+
+    spell_enhance_ability: "Enhance Ability",
+    spell_enhance_ability_description:
+      "Enhance one of an ally's six standard ability scores for 3 turns.",
+
+    spell_front_liner: "Front Liner",
+    spell_front_liner_description:
+      "Taunt nearby enemies, forcing them to target you instead of your allies.",
   },
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -592,5 +608,21 @@ export const spellTranslations = {
     spell_crown_of_madness: "Coroa da Loucura",
     spell_crown_of_madness_description:
       "Leve um inimigo à loucura, fazendo com que ele ataque seus próprios aliados por 3 turnos.",
+
+    spell_calm_emotions: "Acalmar Emoções",
+    spell_calm_emotions_description:
+      "Acalme as emoções das criaturas na área, removendo medo e confusão e impedindo que sejam aplicados novamente enquanto permanecerem nela.",
+
+    spell_phantasmal_force: "Força Fantasmagórica",
+    spell_phantasmal_force_description:
+      "Crie uma ilusão aterrorizante que assalta a mente de um inimigo, causando dano mágico e provocando medo.",
+
+    spell_enhance_ability: "Aprimorar Habilidade",
+    spell_enhance_ability_description:
+      "Aprimore um dos seis atributos básicos de um aliado por 3 turnos.",
+
+    spell_front_liner: "Front Liner",
+    spell_front_liner_description:
+      "Provoque os inimigos próximos, fazendo com que ataquem você em vez de seus aliados.",
   },
 };
