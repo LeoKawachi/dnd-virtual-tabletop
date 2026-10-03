@@ -18,7 +18,8 @@ export interface CharacterClass {
   descriptionKey: string;
 
   baseHp: number;
-  baseDamageDie: string;
+  hpPerLevel: number;
+  resourceProgression: number[][];
 
   setupCharacter?: (character: RulesCharacter) => void;
 }
